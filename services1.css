@@ -1,0 +1,200 @@
+*{
+	
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body{
+	background-color: #FFFFFF;
+}
+.top-bar{
+	position: static;
+	margin: auto;
+	border-bottom: 1px solid #000000; 
+
+}
+#navbar {
+	margin: 17px 0 20px 20px;
+	font-family: "Roboto" sans-serif;
+	font-size: 18px;
+	
+}
+#navbar a{
+	text-decoration: none;
+	display: inline-block;
+	cursor: default;
+	color: #212121;
+
+}
+
+#QS{
+	margin: 0 0 0 480px;
+	font-size: 23px;
+	
+}
+#loginBar{
+	margin: -54px 55px 0 0;
+	float: right;
+	border: 1px solid #E8E8E8;
+	border-right: none;
+	font-size: 10px;
+	padding: 10px;
+	outline: none;
+	width: 200px;
+	-webkit-border-top-left-radius: 1px;
+	-webkit-border-bottom-left-radius: 1px;
+	-moz-border-radius-topleft: 1px;
+	-moz-border-radius-bottomleft: 1px;
+	border-top-left-radius: 1px;
+	border-bottom-left-radius: 1px;
+	box-shadow: 0px 0.5px 0.5px 0px ;
+
+}
+#loginBtn{
+	margin: -54px 19px 0 0;
+	float: right;
+	border: none;
+	font-size: 10px;
+	padding: 11px ;
+	background-color: #E8E8E8;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
+}
+
+.container{
+	position: relative;
+	margin: auto;
+	background-color: ;
+	width: 100%;
+	max-width: 600px;
+}
+#info{
+	margin: 95px 0 0 0;
+	padding: 50px;
+}
+fieldset{
+	border: medium none !important;
+	width: 100%;
+	margin: 10px 0 0 70px;
+	font: 400 16px/16px "Roboto", Helveticam, Arial;
+	outline: none;
+
+
+}
+#info input[type="text"]{
+	border: none;
+	border-bottom: 1px solid black;
+	padding: 10px;
+	outline: none;
+}
+#info input[type="tel"]{
+	border: none;
+	border-bottom: 1px solid black;
+	padding: 10px;
+	outline: none;
+}
+#info input[type="email"]{
+	border: none;
+	border-bottom: 1px solid black;
+	width: 67%;
+	padding: 10px;
+	outline: none;
+}
+#info input[type="url"]{
+	border: none;
+	border-bottom: 1px solid black;
+	width: 67%;
+	padding: 10px;
+	outline: none;
+}
+#info input[type="text"]:hover,
+#info input[type="tel"]:hover,
+#info input[type="email"]:hover,
+#info input[type="url"]:hover{
+	-webkit-transition: box-shadow 0.1s ease-in-out;
+  -moz-transition: box-shadow 0.1s ease-in-out;
+	transition: box-shadow 0.1s ease-in-out;
+	box-shadow: 3px 3px #E0E0E0;
+
+}
+#info input[type="text"]:active,
+#info input[type="tel"]:active,
+#info input[type="email"]:active,
+#info input[type="url"]:active,#info input[type="text"]:focus,
+#info input[type="tel"]:focus,
+#info input[type="email"]:focus,
+#info input[type="url"]:focus{
+	box-shadow: 5px 10px 8px #DCDCDC;
+	border-bottom: none;
+}
+#info input[type="submit"]{
+	margin: 0 0 0 0;
+	cursor: pointer;
+	padding: 10px;
+	width: 140px;
+	color: #FFFFFF;
+	border: none;
+	font-size: 14px;
+	font-weight: 700;
+	font-family: "Roboto", sans-serif;
+}
+span:hover{
+	cursor: pointer;
+}
+#mss{
+	margin: 10px 0 0 0;
+	text-align: center;
+	font: 400 13px/16px "Roboto", Helveticam, Arial;
+	color: #787878;
+}
+#call{
+	background-color: #00cc00;
+}
+#next{
+	background-color: #007acc;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
