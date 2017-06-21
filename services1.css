@@ -131,7 +131,8 @@ fieldset{
 #info input[type="text"]:active,
 #info input[type="tel"]:active,
 #info input[type="email"]:active,
-#info input[type="url"]:active,#info input[type="text"]:focus,
+#info input[type="url"]:active,
+#info input[type="text"]:focus,
 #info input[type="tel"]:focus,
 #info input[type="email"]:focus,
 #info input[type="url"]:focus{
@@ -185,15 +186,15 @@ span:hover{
     width: 80%;
 }
 /* The Close Button */
-.close {
+#close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+#close:hover,
+#close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
