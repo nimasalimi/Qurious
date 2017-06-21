@@ -5,8 +5,6 @@
 	<link rel="stylesheet" type="text/css" href= "services1.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="top-bar">
@@ -20,7 +18,7 @@
 	</form>
 	
 	<div class="container">
-		<form name="req" id="info" action="" method="post">
+		<form name="req" id="info" action="" method="post" onsubmit="return areValuesEmpty(this)">
 			<fieldset>
 				<input type="text" id="nonbtn" name="first" placeholder="First Name" required="required" autocomplete="off"> <input type="text" id="nonbtn" name="last" placeholder="Last Name" required="required" autocomplete="off">
 			</fieldset>
@@ -46,17 +44,15 @@
 			</fieldset>
 			
 			<p id="mss">Please request a call or set a time</p>
-			<input type="submit" id="call" onclick="func1()" style="margin: 5px 0 0 71px" value="Call Now"> 
+			<input type="submit" id="call" onclick="updateStyle()" style="margin: 5px 0 0 71px" value="Call Now"> 
 
 			<!-- Trigger the modal with a button -->
-  
-			<input type="submit" id="timebtn" data-toggle="modal" data-target="#myModal" onclick="func1();" style="margin: 5px 0 0 47px" value="Set time">
+			<input type="submit" id="next" data-toggle="modal" data-target="#myModal" onclick="send()" style="margin: 5px 0 0 47px" value="Continue">
   						
-  			<div class="modal" id="myModal" role="dialog">		<!-- Modal -->
-    			<div class="modal-dialog">  					
-      			<div class="modal-content">		<!-- Modal content-->
+  			<div class="modal" id="myModal" role="dialog">		<!-- Modal -->   					
+      			<div class="modal-content">		<!-- Modal content -->
         			<div class="modal-header">
-          			<span class="close" data-dismiss="modal">&times;</span>
+          			<span id="close" data-dismiss="modal">&times;</span>
           			<h4 class="modal-title">Modal Header</h4>
         			</div>
         			<div class="modal-body">
@@ -66,19 +62,16 @@
           			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         			</div> 
    					</div>
-  				</div>
-  			</div>
-			<fieldset>
-				<input type="submit" id="next" onclick="func1()" style="margin: 0 0 0 100px" value="Continue">
-			</fieldset>
+  			</div> 
 		</form>
 	</div>
 	<script type="text/javascript">
-		var func1 = function(){
-			if (document.req.first.value == ""){
+
+		// This function checks the form inputs, if empty style changes
+		function updateStyle() {
+			if (document.req.first.value == "") {
 				document.req.first.style.border= "1px solid red";
 				document.req.first.style.backgroundColor="#FFFF99";
-				document.req.first.oninvalid="";
 			}
 			if(document.req.last.value=="") {
 				document.req.last.style.border="1px solid red";
@@ -88,7 +81,7 @@
 				document.req.bn.style.border="1px solid red";
 				document.req.bn.style.backgroundColor="#FFFF99";
 			}
-			if (document.req.role.value==""){
+			if (document.req.role.value=="") {
 				document.req.role.style.border="1px solid red";
 				document.req.role.style.backgroundColor="#FFFF99";
 			}
@@ -100,35 +93,72 @@
 				document.req.email.style.border="1px solid red";
 				document.req.email.style.backgroundColor="#FFFF99";
 			}
-				
-		}
 
-		var modal = document.getElementById('myModal');
-		var btn = document.getElementById('timebtn');
-		var span = document.getElementByClassName('close');
-		
-		var func2 = function(){
-			btn.onclick = function(){
-				modal.style.display = "block";
-			}	//When button is clicked open modal
-		
-			span.onclick = function() {
-    		modal.style.display = "none";
-			}// When the user clicks on <span> (x), close the modal
-
-			window.onclick = function(event) {
-    		if (event.target == modal) {
-        	modal.style.display = "none";
-    		}// When the user clicks anywhere outside of the modal, close it
+			if (!document.req.first.value == "") {
+				document.req.first.style.border= "none";
+				document.req.first.style.borderBottom= "1px solid black";
+				document.req.first.style.backgroundColor="#FFFFFF";
 			}
-		}
-		
-		var bothfuncs() = function
+			if(!document.req.last.value=="") {
+				document.req.last.style.border="none";
+				document.req.last.style.borderBottom= "1px solid black";
+				document.req.last.style.backgroundColor="#FFFFFF";
+			}
+			if(!document.req.bn.value=="") {
+				document.req.bn.style.border="none";
+				document.req.bn.style.borderBottom= "1px solid black";
+				document.req.bn.style.backgroundColor="#FFFFFF";
+			}
+			if (!document.req.role.value=="") {
+				document.req.role.style.border="none";
+				document.req.role.style.borderBottom= "1px solid black";
+				document.req.role.style.backgroundColor="#FFFFFF";
+			}
+			if(!document.req.pp.value=="") {
+				document.req.pp.style.border="none";
+				document.req.pp.style.borderBottom= "1px solid black";
+				document.req.pp.style.backgroundColor="#FFFFFF";
+			}
+			if(!document.req.email.value=="") {
+				document.req.email.style.border="none";
+				document.req.email.style.borderBottom= "1px solid black";
+				document.req.email.style.backgroundColor="#FFFFFF";
+			}
 
 		}
-		
-		
-		
+
+		//This function checks if the form slots are empty (empty == true)
+		function areValuesEmpty() {
+
+			//get all inputs within the form with the name 'req'
+			var inputs = document.forms['req']; 
+
+			for (var i=0; i< inputs.length; i++) {
+
+				if (inputs[i].hasAttribute("required") && inputs[i].value == "") {
+					console.log("empty");
+					updateStyle();
+					return true;
+				}
+			}
+			updateStyle();
+			console.log("full");
+			return false;
+		}
+
+		function send() {
+
+			if (!areValuesEmpty()){
+				console.log("Its not empty and finding step2");
+				step2();
+			}
+
+		}
+		function showmodal() {
+
+		}
+
+
 	</script>
 </body>
 </html>
