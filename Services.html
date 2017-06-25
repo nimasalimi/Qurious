@@ -5,6 +5,11 @@
 	<link rel="stylesheet" type="text/css" href= "services1.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+	
+
 </head>
 <body>
 	<div class="top-bar">
@@ -19,27 +24,23 @@
 	
 	<div class="container">
 		<form name="req" id="info" action="" method="post" onsubmit="return areValuesEmpty(this)">
-			<fieldset>
+			<fieldset class="slots" id="fname">
 				<input type="text" id="nonbtn" name="first" placeholder="First Name" required="required" autocomplete="off"> <input type="text" id="nonbtn" name="last" placeholder="Last Name" required="required" autocomplete="off">
 			</fieldset>
 			
-			<fieldset>
+			<fieldset class="slots" id="Lname">
 				<input type="text" id="nonbtn" name="bn" placeholder="Business Name" required="required" autocomplete="off"> <input type="text" id="nonbtn" name="role" placeholder="Role" required="required" autocomplete="off">
 			</fieldset>
 			
-			<fieldset>
+			<fieldset class="slots" id="pnumber">
 				<input type="tel" id="nonbtn" name="pp" placeholder="Primary phone #" required="required" autocomplete="off">
 			</fieldset>
-			
-			<fieldset>
-				<input type="tel" id="nonbtn" name="sp" placeholder="Secondary phone #" autocomplete="off">
-			</fieldset>
 
-			<fieldset>
+			<fieldset class="slots" id="mail">
 				<input type="email" id="nonbtn" name="email" placeholder="Email Address" required="required" autocomplete="off">
 			</fieldset>
 			
-			<fieldset>
+			<fieldset class="slots" id="site">
 				<input type="url" id="nonbtn" name="web" placeholder="Website" autocomplete="off">
 			</fieldset>
 			
@@ -53,18 +54,40 @@
       			<div class="modal-content">		<!-- Modal content -->
         			<div class="modal-header">
           			<span id="close" data-dismiss="modal">&times;</span>
-          			<h4 class="modal-title">Modal Header</h4>
         			</div>
         			<div class="modal-body">
-          			<p>Some text in the modal.</p>
+          			<p>Please set a time convenient for you</p><br>
+          			<fieldset id="datefield">
+          				<p>Date: <input type="text" id="datepicker" style="background-color: #E3E3E3;"></p>
+          			</fieldset>
         			</div>
         			<div class="modal-footer">
-          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<fieldset id="save_cancel">
+          				<button class="squareButton" type="submit">Cancel</button>
+          				<button class="squareButton" id="savebtn" type="submit">Save</button>
+								</fieldset>
         			</div> 
    					</div>
   			</div> 
 		</form>
 	</div>
+
+
+
+	<script>
+		
+		$(document).ready (
+			function() {
+    	$("#datepicker").datepicker({
+    		changeMonth: true, 
+       changeYear: true, 
+    	});
+  	});
+	
+	</script>
+	
+
+
 	<script type="text/javascript">
 
 		// This function checks the form inputs, if empty style changes
@@ -94,7 +117,7 @@
 				document.req.email.style.backgroundColor="#FFFF99";
 			}
 
-			if (!document.req.first.value == "") {
+			/*if (!document.req.first.value == "") {
 				document.req.first.style.border= "none";
 				document.req.first.style.borderBottom= "1px solid black";
 				document.req.first.style.backgroundColor="#FFFFFF";
@@ -123,7 +146,7 @@
 				document.req.email.style.border="none";
 				document.req.email.style.borderBottom= "1px solid black";
 				document.req.email.style.backgroundColor="#FFFFFF";
-			}
+			}*/
 
 		}
 
@@ -146,15 +169,34 @@
 			return false;
 		}
 
-		function send() {
+		function showmodal() {
+			var modal = document.getElementById('myModal');
+			var btn = document.getElementById('next');
+			var span = document.getElementById('close');
+
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}	//When button is clicked open modal
+
+			span.onclick = function() {
+				modal.style.display = "none";
+			}// When the user clicks on <span> (x), close the modal
+
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+	    	}// When the user clicks anywhere outside of the modal, close it
+	   	}
+	   	updateStyle();
+	  }
+
+	  function send() {
 
 			if (!areValuesEmpty()){
+				showmodal();
 				console.log("Its not empty and finding step2");
-				step2();
+				
 			}
-
-		}
-		function showmodal() {
 
 		}
 
