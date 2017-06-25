@@ -1,5 +1,5 @@
 *{
-	
+	border:1px dotted black ;
 }
 
 * {
@@ -83,7 +83,7 @@ body{
 	margin: 95px 0 0 0;
 	padding: 50px;
 }
-fieldset{
+fieldset.slots{
 	border: medium none !important;
 	width: 100%;
 	margin: 10px 0 0 70px;
@@ -131,8 +131,7 @@ fieldset{
 #info input[type="text"]:active,
 #info input[type="tel"]:active,
 #info input[type="email"]:active,
-#info input[type="url"]:active,
-#info input[type="text"]:focus,
+#info input[type="url"]:active,#info input[type="text"]:focus,
 #info input[type="tel"]:focus,
 #info input[type="email"]:focus,
 #info input[type="url"]:focus{
@@ -179,18 +178,62 @@ span:hover{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	max-width: 400px;
+	max-height: 600px;
+	height: 70%; /* +++++++++++++++++++++++++++ */
+	width: 70%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
-/* The Close Button */
+.modal-header {
+	padding: 10px 16px;
+	color: #FFFFFF;
+}
+.modal-body {
+	padding: 2px 16px;
+}
+
+.modal-footer {
+    padding: 10px;
+}
+
+.modal-body{
+	height: 100px;
+}
+/* The Close Button  <span> */
+div.modal-body p {
+	margin: 0 0 0 0;
+	color: green;
+	font-family: "Roboto", sans-serif;
+}
+
+fieldset#save_cancel button{
+	margin: 0 0 0 5px;
+	cursor: pointer;
+	padding: 10px;
+	width: 140px;
+	color: #FFFFFF;
+	border: none;
+	font-size: 14px;
+	font-weight: 700;
+	font-family: "Roboto", sans-serif;
+}
+
+#savebtn{
+	margin: 0 0 0 40px;
+}
+
 #close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
+    line-height: 16px;
     font-weight: bold;
+    margin: 0 -5px 0 0;
 }
 
 #close:hover,
